@@ -13,5 +13,4 @@ echo "Password: "
 stty -echo
 read  passd
 stty echo
-commands | openssl s_client -CAfile /home/ubuntu/certificate.crt -connect imap.cse.iitk.ac.in:993
-
+commands | openssl s_client -CAfile /home/kunal/cs252_proj/cs252-mastercertificate.crt -connect imap.cse.iitk.ac.in:993
