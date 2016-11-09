@@ -1,3 +1,4 @@
+from __future__ import print_function
 import imaplib
 import email
 
@@ -6,9 +7,9 @@ def extract_body(payload):
         return payload
     else:
         return '\n'.join([extract_body(part.get_payload()) for part in payload])
-
-conn = imaplib.IMAP4_SSL("imap.gmail.com", 993)
-conn.login("lawdjesusrocks@gmail.com", "qmesf40241")
+temp=open('temp.txt','w+')
+conn = imaplib.IMAP4_SSL("imap.gmail.com", '993')
+conn.login("lawdjesusrocks", "qmesf40241")
 conn.select()
 typ, data = conn.search(None, 'UNSEEN')
 try:
@@ -21,7 +22,7 @@ try:
                 print(subject)
                 payload=msg.get_payload()
                 body=extract_body(payload)
-                print(body)
+                print(body,file = temp)
         typ, response = conn.store(num, '+FLAGS', r'(\Seen)')
 finally:
     try:

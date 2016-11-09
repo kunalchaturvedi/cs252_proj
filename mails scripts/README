@@ -1,0 +1,6 @@
+mail.py is the file that works and prints all unread mails.
+it will then mark these mails to read.
+output is stored in temp.txt
+the output is messy and not exactly the body.
+but we can use parser2.py to search for events from this data also.
+ths has been tested .
