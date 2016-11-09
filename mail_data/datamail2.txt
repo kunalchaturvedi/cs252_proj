@@ -1,0 +1,77 @@
+#####
+EVENT:: event no 1
+DATE:: 11/11/2016
+STARTTIME:: 2:00 am
+ENDTIME:: 4:00 am
+DESCRIPTION:: this is the first event
+LOCATION:: RM101
+asdcfgvbhdg
+asfdghj
+ASFDFGHADSFHGJHTY
+
+#####
+
+#####
+EVENT:: event no 2
+DATE:: 13/11/2016
+STARTTIME:: 2:00 pm
+ENDTIME:: 4:00 pm
+DESCRIPTION:: this is the second event
+LOCATION:: RM201
+asdfg
+wertydxvcnj
+fg
+#####
+
+#####
+EVENT:: event no 3
+DATE:: 14/11/2016
+STARTTIME:: 5:00 pm
+ENDTIME:: 7:00 pm
+DESCRIPTION:: this is the third event
+LOCATION:: RM301
+asduvgshbjnfwuaysbvsdkjc
+fuhasvuahsus
+#####
+
+#####
+EVENT:: event no 4
+DATE:: 14/11/2016
+STARTTIME:: 12:00 am
+ENDTIME:: 4:00 am
+DESCRIPTION:: this is the fourth event
+LOCATION:: RM401
+ asfiugsfusvbisuvbiv
+safuasvciu
+as
+#####
+
+#####
+EVENT:: event no 5
+DATE:: 15/11/2016
+STARTTIME:: 12:00 pm
+ENDTIME:: 4:00 pm
+DESCRIPTION:: this is the fifth event
+LOCATION:: RM501
+ asfdinjasfniasfijb
+asfousahvisaj
+asjbvasivi
+asdsf
+#####
+
+#####
+EVENT:: event no 6
+DATE:: 20/11/2016
+STARTTIME:: 8:00 am
+ENDTIME:: 10:30 am
+DESCRIPTION:: this is the sixth event
+LOCATION:: RM601
+a6s5f16asf1as45f1a
+f6as4f65safs
+f6s5af
+6asf5s
+fassasaf
+#####
+
+
+
