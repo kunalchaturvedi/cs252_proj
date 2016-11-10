@@ -1,26 +1,80 @@
 <?php include ( "header.inc.php" );
 ?>
+<style>
+table#t1 {
+    border-collapse: collapse;
+	 border: 1px solid black;
+}
 
+table#t1, th#t1, td#t1 {
+	padding:20px;
+	border: 1px solid black;
+border-collapse: collapse;
+  
+	
+}
+tr:nth-child(even) {background-color: #000080;}
+th {
+    background-color: #4CAF50;
+    color: white;
+	font-size:22px;
+}
+</style>
 <div id="home">
-<table width="50%">
+<table width="80%" border="0">
 <tr>
-<td width="40%" valign="top">
+<td width="15%" valign="top">
 <div class="homeleft">
-				<div id="menu1"><br><br><br><a href="#" />Inbox</a><br><br><br>
-				<a href="#" />Today</a><br><br><br>
-				<a href="#" />Next 7 days</a><br><br><br></div>
+				<table>
+<th>Add to Calander</th>
+</table>
 </div>
 
 </td>
-<td width="60%" valign="top">
+<td width="85%" valign="top">
 <div class="homeright">
-<br><br><br><br><br><br>
+<br>
 
-<div class="postForm">
-<form action="home.php" method="POST">
-<textarea id="post" name="post" rows="4" cols="66"></textarea>
-<input type="submit" />
-</form>
+<div class="events" style="overflow-x:auto";>
+<table id= "t1">
+<tr>
+<th width="10%" id= "t1">
+NAME
+</th>
+<th width="10%" id= "t1">
+DATE
+</th>
+
+<th width="10%" id= "t1">
+START TIME
+</th>
+<th width="10%" id= "t1">
+END TIME
+</th>
+
+<th width="10%" id= "t1">
+VENUE
+</th>
+<th width="35%" id= "t1">
+DESCRIPTION
+</th>
+<th width="10%" id= "t1">ADD TO CALENDAR</th>
+</tr>
+
+<?php
+echo "\n\n";
+$f = fopen("thefinal.csv", "r");
+while (($line = fgetcsv($f)) !== false) {
+        echo '<tr>';
+        foreach ($line as $cell) {
+                echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . htmlspecialchars($cell) . '</td>';
+        }
+	echo '<<td width="16%" id= "t1" style="font-size:14px">Add </td>';
+        echo "</tr>\n";
+}
+fclose($f);
+echo "\n";?>
+
 </div><br><br>
 
 
