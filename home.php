@@ -26,7 +26,7 @@ th {
 <td width="15%" valign="top">
 <div class="homeleft">
 				<table>
-<th>Add to Calander</th>
+<th>Add to Calender</th>
 </table>
 </div>
 
@@ -62,18 +62,38 @@ DESCRIPTION
 </tr>
 
 <?php
-echo "\n\n";
+
 $f = fopen("thefinal.csv", "r");
 while (($line = fgetcsv($f)) !== false) {
         echo '<tr>';
+	$c=0;
         foreach ($line as $cell) {
-                echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . htmlspecialchars($cell) . '</td>';
+                $col[$c++] = htmlspecialchars($cell) ;
         }
-	echo '<<td width="16%" id= "t1" style="font-size:14px">Add </td>';
-        echo "</tr>\n";
-}
+$query = mysql_query("INSERT INTO events VALUES ('$col[0]','$col[1]', '$col[2]', '$col[3]', '$col[4]', '$col[5]')");
+
+	}
 fclose($f);
-echo "\n";?>
+
+
+ $sql = mysql_query("SELECT * FROM `events` WHERE 1");
+$count = mysql_num_rows($sql); //Count the number of rows returned
+	while ($count) {$count-=1;
+		while($row = mysql_fetch_array($sql)){ 
+	echo '<tr>';
+             echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['name'] . '</td>'; 
+	echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['date'] . '</td>'; 
+		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['stime'] . '</td>'; 
+		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['etime'] . '</td>'; 
+		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['venue'] . '</td>'; 
+		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['description'] . '</td>'; 
+		echo '<<td width="16%" id= "t1" style="font-size:14px">Add </td>';
+        echo "</tr>\n";	
+			
+	}
+}
+?>
+
 
 </div><br><br>
 

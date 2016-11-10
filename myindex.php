@@ -93,11 +93,12 @@ if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
              $id = $row["id"];
 	}
 		 $_SESSION["user_login"] = $user_login;
-	$command = escapeshellcmd('unread.py');
-		$output=shell_exec($command);
-	$command = escapeshellcmd('mail.py');
-			 shell_exec($command);
 	
+	$command = 'python mail.py';
+
+$output = shell_exec($command);
+echo $output;
+echo shell_exec('./parser2.sh');
 			header("Location: home.php");
          exit();
 		} else {
