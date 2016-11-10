@@ -21,7 +21,7 @@ do
 		'dateTime': '$DATE~T$ENDTIME:00+05:30',
 	  },
 }" > output.txt
-sed 's/~//g' output.txt > finaloutput.csv
+sed 's/~//g' output.txt > finaloutput.txt
 done < $INPUT
 IFS=$OLDIFS
 rm data1.csv data2.csv output.txt
