@@ -1,4 +1,17 @@
 <?php include ( "header.inc.php" );
+$add = @$_POST['add'];
+$nm="";
+$nm=strip_tags(@$_POST['ename']);
+if ($add) { 
+	$sql1 = mysql_query("SELECT * FROM events WHERE name=".$nm."");
+	$count = mysql_num_rows($sql1); //Count the number of rows returned
+	
+	while ($count) {$count-=1;
+		while($row = mysql_fetch_array($sql1)){ 
+		echo '<br><br><br><br><br><h2>'.$row['name'].'</h2>';
+	}}
+}
+
 ?>
 <style>
 table#t1 {
@@ -27,6 +40,10 @@ th {
 <div class="homeleft">
 				<table>
 <th>Add to Calender</th>
+<form action="#" method="POST">
+						<input type="text" name="ename" size="25" placeholder="Event Name"/><br><br>
+<input type="submit" name="add" value="Add!"/>
+					</form>
 </table>
 </div>
 
@@ -62,7 +79,7 @@ DESCRIPTION
 </tr>
 
 <?php
-
+if(file_exists("thefinal.csv")){
 $f = fopen("thefinal.csv", "r");
 while (($line = fgetcsv($f)) !== false) {
         echo '<tr>';
@@ -75,7 +92,7 @@ $query = mysql_query("INSERT INTO events VALUES ('$col[0]','$col[1]', '$col[2]',
 	}
 fclose($f);
 
-
+unlink("thefinal.csv");}
  $sql = mysql_query("SELECT * FROM `events` WHERE 1");
 $count = mysql_num_rows($sql); //Count the number of rows returned
 	while ($count) {$count-=1;
