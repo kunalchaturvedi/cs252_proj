@@ -1,15 +1,19 @@
 <?php include ( "header.inc.php" );
 $add = @$_POST['add'];
 $nm="";
-$nm=strip_tags(@$_POST['ename']);
+$nm=strip_tags(@$_POST['id']);
+//header("Location: d.php");
 if ($add) { 
-	$sql1 = mysql_query("SELECT * FROM events WHERE name=".$nm."");
-	$count = mysql_num_rows($sql1); //Count the number of rows returned
 	
-	while ($count) {$count-=1;
+	$sql1 = mysql_query("SELECT * FROM events WHERE id=".$nm."");
+	$count = mysql_num_rows($sql1); //Count the number of rows returned
+	$myfile = fopen("testfile.txt", "w");
+	while ($count) {echo $nm;$count-=1;
 		while($row = mysql_fetch_array($sql1)){ 
-		echo '<br><br><br><br><br><h2>'.$row['name'].'</h2>';
+		fwrite($myfile, $row["name"]."\n".$row["venue"]."\n".$row["description"]."\n".$row["date"]." ".$row["stime"]."\n".$row["date"]." ".$row["stime"]);
+		
 	}}
+fclose($myfile);
 }
 
 ?>
@@ -41,7 +45,7 @@ th {
 				<table>
 <th>Add to Calender</th>
 <form action="#" method="POST">
-						<input type="text" name="ename" size="25" placeholder="Event Name"/><br><br>
+						<input type="text" name="id" size="25" placeholder="Event ID"/><br><br>
 <input type="submit" name="add" value="Add!"/>
 					</form>
 </table>
@@ -75,7 +79,7 @@ VENUE
 <th width="35%" id= "t1">
 DESCRIPTION
 </th>
-<th width="10%" id= "t1">ADD TO CALENDAR</th>
+<th width="10%" id= "t1">EVENT ID</th>
 </tr>
 
 <?php
@@ -86,25 +90,25 @@ while (($line = fgetcsv($f)) !== false) {
 	$c=0;
         foreach ($line as $cell) {
                 $col[$c++] = htmlspecialchars($cell) ;
-        }
-$query = mysql_query("INSERT INTO events VALUES ('$col[0]','$col[1]', '$col[2]', '$col[3]', '$col[4]', '$col[5]')");
+       }
+$query = mysql_query("INSERT INTO events VALUES (NULL ,'$col[0]','$col[1]', '$col[2]', '$col[3]', '$col[4]', '$col[5]')");
 
 	}
 fclose($f);
 
-unlink("thefinal.csv");}
+}
  $sql = mysql_query("SELECT * FROM `events` WHERE 1");
 $count = mysql_num_rows($sql); //Count the number of rows returned
 	while ($count) {$count-=1;
 		while($row = mysql_fetch_array($sql)){ 
 	echo '<tr>';
-             echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['name'] . '</td>'; 
+             echo '<td width="16%" id= "t1" style="font-size:14px">'. '' .$row['name'] . '</td>'; 
 	echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['date'] . '</td>'; 
 		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['stime'] . '</td>'; 
 		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['etime'] . '</td>'; 
 		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['venue'] . '</td>'; 
 		echo '<td width="16%" id= "t1" style="font-size:14px">'. '' . $row['description'] . '</td>'; 
-		echo '<<td width="16%" id= "t1" style="font-size:14px">Add </td>';
+		echo '<<td width="16%" id= "t1" style="font-size:14px">'. $row['id'] .' </td>';
         echo "</tr>\n";	
 			
 	}
