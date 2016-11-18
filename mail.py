@@ -19,7 +19,7 @@ try:
             if isinstance(response_part, tuple):
                 msg = email.message_from_string(response_part[1])
                 subject=msg['subject']                   
-                print(subject)
+                #print(subject)
                 payload=msg.get_payload()
                 body=extract_body(payload)
                 print(body,file = temp)

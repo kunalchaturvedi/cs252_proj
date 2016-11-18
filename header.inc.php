@@ -23,14 +23,14 @@ $username= $_SESSION["user_login"];
 	<div class="headermenu">
 		<div id="wrapper">
 			<div class="logo">
-				CS252 PROJECT
+				Event Calendar
 	 			<!--<img src=""/> -->
 			</div>
 			
 		
 			<div class="search_box">
 				<form action="search.php" method="GET" id= "search">
-					<input type="text" name="q" size="60" placeholder="search..." />
+					<input type="text" name="q" size="60" placeholder="Search" />
 				</form>
 			</div>
 			

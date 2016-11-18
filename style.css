@@ -10,6 +10,7 @@
 }
 
 .headermenu{
+	background-color: #1e50a0;
 	background-image:url(header.jpg);
 	height:58px;
 	border-bottom: 10px;
@@ -19,7 +20,7 @@
 }
 
 #wrapper{
-
+	background-color: #1e50a0;
 	background-image:url(header.jpg);
 	margin-left:150px;
 	margin-right:auto;
@@ -30,13 +31,15 @@
 }
 
 .logo{
+	background-color: #1e50a0;
+	color: white;
 	background-image:url(header.jpg);
 	width:290px;
 	font-family:Arial,Helvetica, Sans-serif;
 	font-size: 35px;
-	color: #FFFFFF;
 	padding-top:5px;
 	padding-bottom:13px;
+	font-weight: bold;
 
 }
 
@@ -44,18 +47,19 @@
 	background-image:url(header.jpg);
 	width:150px;
 	height:38px;
+	
 }
 .search_box{
-	
 	position:absolute;
 	top:10px;
+	height:10px;
 	margin:0;
-	margin-left: 350px;
+	margin-left: 1300px;
 		
 }
+
 @media screen and (max-width: 1280px){
 #menu {
-	
 	position:absolute;
 	top:0px;
 	right:0px;
@@ -93,7 +97,7 @@
 
 }
 
-#menu a{
+#menu a{background-color: #1e50a0;
 	background-image:url(header.jpg);
 	color:#FFFFFF ;
 	background-repeat:no-repeat;
@@ -108,8 +112,7 @@
 	
 	
 }
-#menu1 a{
-	
+#menu1 a{	
 	color:#191970 ;
 	background-repeat:no-repeat;
 	top:10px;
@@ -126,7 +129,7 @@
 
 #menu a:hover{
 	background-image:url(header.jpg);
-	color:#FF4500 ;
+	color:#b2b8c1 ;
 	
 }
 #menu1 a:hover{
