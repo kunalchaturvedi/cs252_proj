@@ -2,13 +2,15 @@
 $add = @$_POST['add'];
 $nm="";
 $nm=strip_tags(@$_POST['id']);
-//header("Location: d.php");
+
 if ($add) { 
 	
+
 	$sql1 = mysql_query("SELECT * FROM events WHERE id=".$nm."");
 	$count = mysql_num_rows($sql1); //Count the number of rows returned
+
 	$myfile = fopen("testfile.txt", "w");
-	while ($count) {echo $nm;$count-=1;
+	while ($count) {$count-=1;
 		while($row = mysql_fetch_array($sql1)){ 
 		fwrite($myfile, $row["name"]."\n".$row["venue"]."\n".$row["description"]."\n".$row["date"]." ".$row["stime"]."\n".$row["date"]." ".$row["stime"]);
 		

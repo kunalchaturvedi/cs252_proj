@@ -45,7 +45,7 @@ else
 {
 // check the maximum length of password does not exceed 25 characters and is not less than 5 characters
 if (strlen($pswd)>30||strlen($pswd)<5) {
-echo "<h2>Your password must be between 5 and 25 characters long!</h2>";
+echo "<h2>Your password must be between 5 and 30 characters long!</h2>";
 }
 else
 {
@@ -85,49 +85,26 @@ if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
 	$user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters
 	$md5password_login = md5($password_login);
-    $sql = mysql_query("SELECT id FROM users WHERE username='$user_login' AND password='$md5password_login' LIMIT 1"); // query the person
+    $sql = mysql_query("SELECT id,email FROM users WHERE username='$user_login' AND password='$md5password_login' LIMIT 1"); // query the person
 	//Check for their existance
 	$userCount = mysql_num_rows($sql); //Count the number of rows returned
+$myfile = fopen("some.txt", "w");
+		
+
 	if ($userCount == 1) {
 		while($row = mysql_fetch_array($sql)){ 
              $id = $row["id"];
-	}
+fwrite($myfile, $row["email"]);
+
+		
+	}fclose($myfile);
 		 $_SESSION["user_login"] = $user_login;
 	
-#####################
-$command = "python /home/sachin/lamp/public_html/mail.py 2>&1";
-$pid = popen( $command,"r");
-while( !feof( $pid ) )
-{
- echo fread($pid, 256);
- flush();
- ob_flush();
- usleep(1);
-}
-pclose($pid);
-$command = "/home/sachin/lamp/public_html/parser2.sh 2>&1";
-$pid = popen( $command,"r");
-while( !feof( $pid ) )
-{
- echo fread($pid, 256);
- flush();
- ob_flush();
- usleep(1);
-}
-pclose($pid);
+	//$command = 'python mail.py';
 
-$command = "/home/sachin/lamp/public_html/calendarparse.sh 2>&1";
-$pid = popen( $command,"r");
-while( !feof( $pid ) )
-{
- echo fread($pid, 256);
- flush();
- ob_flush();
- usleep(1);
-}
-pclose($pid);
-#######################
-
+//$output = shell_exec($command);
+//echo $output;
+echo shell_exec('./parser2.sh');
 			header("Location: home.php");
          exit();
 		} else {
@@ -155,10 +132,10 @@ pclose($pid);
 						<input type="text" name="fname" size="25" placeholder="First Name"/><br><br>
 						<input type="text" name="lname" size="25" placeholder="Last Name"/><br><br>
 						<input type="text" name="username" size="25" placeholder="User Name"/><br><br>
-						<input type="text" name="email" size="25" placeholder="Gmail ID"/><br><br>
-						<input type="text" name="email2" size="25" placeholder="Re-enter Gmail ID"/><br><br>
-						<input type="password" name="password" size="25" placeholder="New password"/><br><br>
-						<input type="password" name="password2" size="25" placeholder="Re-enter password"/><br><br>
+						<input type="text" name="email" size="25" placeholder="Email"/><br><br>
+						<input type="text" name="email2" size="25" placeholder="Email (again)"/><br><br>
+						<input type="password" name="password" size="25" placeholder="Password"/><br><br>
+						<input type="password" name="password2" size="25" placeholder="Password (again)"/><br><br>
 						<input type="submit" name="reg" value="Sign Up!"/>
 					</form>
 					</td>
