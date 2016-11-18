@@ -1,4 +1,4 @@
-# cs252_proj
+# CS252_proj: Event Calendar
 CS252 project repository
 Group 51
 Contributors: Shashaank Kaim | Kunal Chaturvedi | Sachin K Salim
